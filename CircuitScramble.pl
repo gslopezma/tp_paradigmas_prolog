@@ -16,6 +16,10 @@ xor(0,1,1).
 xor(1,0,1).
 xor(1,1,0).
 
+switch(1,A,A,0).
+switch(0,A,0,A).
+
+
 circuit(A, B, C, D) :- 
     not(B, X),
     and(A, X, U),
