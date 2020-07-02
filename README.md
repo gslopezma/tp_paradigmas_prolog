@@ -4,7 +4,7 @@ Primer cuatrimestre de 2020
 Paradigmas de Programación (Programación Lógica)
 Trabajo Práctico 1b: Solución a Circuit Scramble
 
-	Se pide programar en Prolog soluciones a una serie de puzzles llamado Circuit Scramble donde cada puzzle representa un circuito de compuestas lógicas que posee una lista de señales de entrada iniciales (donde cada señal puede ser off u on) y a partir de conexiones de las señales pasando por compuestas lógicas conocidas de una señal de entrada (NOT) y de dos señales de entradas (OR, AND y XOR) se llega a una señal final. Se puede dar que la salida de una compuerta se puede conectar a una o más compuertas seguientes en el circuito.
+Se pide programar en Prolog soluciones a una serie de puzzles llamado Circuit Scramble donde cada puzzle representa un circuito de compuestas lógicas que posee una lista de señales de entrada iniciales (donde cada señal puede ser off u on) y a partir de conexiones de las señales pasando por compuestas lógicas conocidas de una señal de entrada (NOT) y de dos señales de entradas (OR, AND y XOR) se llega a una señal final. Se puede dar que la salida de una compuerta se puede conectar a una o más compuertas seguientes en el circuito.
 Además algunos puzzles de este tipo pueden tener otros tipos de entrada adicionales a las señales de entrada iniciales que son los switches,
   cuyos valor de cada uno puede ser izquierdo o derecho. Todo switch recibe una señal de entrada y tiene dos señales de salida, una a la izquierda 
   y la otra a la derecha. Si un switch tiene el valor izquierdo, copia el valor de la señal de entrada a la señal de salida de la izquierda, 
