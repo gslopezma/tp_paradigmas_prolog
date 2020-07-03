@@ -68,6 +68,54 @@ c6(A, B, C, D, Resultado) :-
     or(EE,FF,R),
     not(R,Resultado).
 
+c7(A, B, C, D, X, Z, Resultado) :-
+    and(A, B, E),
+    or(C, D, F),
+    not(Z, G),
+    and(X, G, H),
+    not(F, I),
+    and(I, H, J),
+    and(E, J, Resultado).
+
+c8(A, B, C, D, X, Z, Resultado) :-
+    or(A, B, E),
+    not(E, G),
+    and(C, D, H),    
+    not(X, I),
+    or(I, Z, F),
+    not(F, J),
+    or(H, J, K),
+    or(G, K, Resultado).
+
+
+c9(A, B, C, D, X, Z, Resultado) :-
+    or(A, B, E),
+    or(C, D, F),
+    not(X, G),
+    and(G, Z, H),
+    not(F, I),
+    and(E, I, J),
+    or(J, H, R),
+    not(R, Resultado).
+
+
+c10(A, B, C, D, X, Z, Resultado) :-
+    and(A, B, E),
+    and(C, D, F),
+    or(X, Z, G),
+    and(E, F, H),
+    or(F, G, I),
+    and(H, I, Resultado).
+
+c11(A, B, C, D, X, Z, Resultado) :-
+    or(A, B, E),
+    or(C, D, F),
+    and(X, Z, G),
+    not(E, H),
+    not(F, I),
+    or(H, F, J),
+    and(I, G, K),
+    and(J, K, Resultado).
 
 
 
