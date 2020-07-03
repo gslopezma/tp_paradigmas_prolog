@@ -117,7 +117,14 @@ c11(A, B, C, D, X, Z, Resultado) :-
     and(I, G, K),
     and(J, K, Resultado).
 
-
+c24(A, B, C, D, X, Z, SW1, Resultado) :-
+    xor(A, B, E),
+    and(C, D, F),
+    xor(X, Z, G),
+    switch(SW1,F,H,I),
+    or(E, H, J),
+    and(I, G, K),
+    and(J, K, Resultado).
 
 c99(A, B, C, D, E, F, G, H, SW1, SW2, Resultado) :-
     and(A, B, I),
