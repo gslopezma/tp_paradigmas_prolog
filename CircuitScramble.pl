@@ -16,7 +16,7 @@ and(1,1,1,1).
 or(0,0,0).
 or(0,1,1).
 or(1,0,1).
-or(1,1,0).
+or(1,1,1).
 
 not(0,1).
 not(1,0).
@@ -29,6 +29,7 @@ xor(1,1,0).
 switch(1,A,A,0).
 switch(0,A,0,A).
 
+estaEncendido(1).
 
 c1(A, B, C, D, Resultado) :-
     and(A, B, E),
@@ -50,6 +51,22 @@ c4(A, B, C, D, Resultado) :-
     or(C, D, F),
     or(E, F, G),
     not(G, Resultado).
+
+c5(A, B, C, D, Resultado) :-
+    or(A, B, E),
+    not(C, CC),
+    and(CC, D, F),
+    not(E, EE),
+    not(F, FF),
+    and(EE, FF, Resultado).
+
+c6(A, B, C, D, Resultado) :-
+    and(A, B, E),
+    or(C, D, F),
+    not(E, EE),
+    not(F, FF),
+    or(EE,FF,R),
+    not(R,Resultado).
 
 
 
