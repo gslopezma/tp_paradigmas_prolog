@@ -3,6 +3,12 @@ and(0,1,0).
 and(1,0,0).
 and(1,1,1).
 
+final([A|[]],1) :- and(A,1,1). 
+
+final([A|XS], Resultado) :-
+    final(XS, Resultado),
+    and(A, Resultado, 1).    
+
 and(0,0,0,0).
 and(1,0,0,0).
 and(0,1,0,0).
@@ -31,53 +37,54 @@ switch(0,A,0,A).
 
 estaEncendido(1).
 
-c1(A, B, C, D, Resultado) :-
+c1([A,B,C,D], _, Resultado) :-
     and(A, B, E),
     and(C, D, F),
-    and(E, F, Resultado).
+    final([E, F], Resultado).
 
-c2(A, B, C, D, Resultado) :-
+c2([A,B,C,D], _, Resultado) :-
     or(A, B, E),
     or(C, D, F),
-    and(E, F, Resultado).
+    final([E, F], Resultado).
 
-c3(A, B, C, D, Resultado) :-
+c3([A,B,C,D], _, Resultado) :-
     and(A, B, E),
-    and(C, D, F),
-    or(E, F, Resultado).
+    or(C, D, F),
+    final([E, F], Resultado).
 
-c4(A, B, C, D, Resultado) :-
+c4([A,B,C,D], _, Resultado) :-
     and(A, B, E),
     or(C, D, F),
     or(E, F, G),
-    not(G, Resultado).
+    final([E, G], Resultado).
 
-c5(A, B, C, D, Resultado) :-
+c5([A,B,C,D], _, Resultado) :-
     or(A, B, E),
     not(C, CC),
     and(CC, D, F),
     not(E, EE),
     not(F, FF),
-    and(EE, FF, Resultado).
+    final([EE, FF], Resultado).
 
-c6(A, B, C, D, Resultado) :-
+c6([A,B,C,D], _, Resultado) :-
     and(A, B, E),
     or(C, D, F),
     not(E, EE),
     not(F, FF),
     or(EE,FF,R),
-    not(R,Resultado).
+    not(R, NR),
+    final([NR, A, F], Resultado).
 
-c7(A, B, C, D, X, Z, Resultado) :-
+c7([A,B,C,D,X,Z], _,Resultado) :-
     and(A, B, E),
     or(C, D, F),
     not(Z, G),
     and(X, G, H),
     not(F, I),
     and(I, H, J),
-    and(E, J, Resultado).
+    final([E, J], Resultado).
 
-c8(A, B, C, D, X, Z, Resultado) :-
+c8([A,B,C,D,X,Z], _, Resultado) :-
     or(A, B, E),
     not(E, G),
     and(C, D, H),    
@@ -85,10 +92,11 @@ c8(A, B, C, D, X, Z, Resultado) :-
     or(I, Z, F),
     not(F, J),
     or(H, J, K),
-    or(G, K, Resultado).
+    or(G, K, L),
+    final([L, E, J], Resultado).
 
 
-c9(A, B, C, D, X, Z, Resultado) :-
+c9([A,B,C,D,X,Z], _, Resultado) :-
     or(A, B, E),
     or(C, D, F),
     not(X, G),
@@ -96,30 +104,30 @@ c9(A, B, C, D, X, Z, Resultado) :-
     not(F, I),
     and(E, I, J),
     or(J, H, R),
-    not(R, Resultado).
+    not(R, NR),
+    final([NR, D, G], Resultado).
 
 
-c10(A, B, C, D, X, Z, Resultado) :-
+c10([A,B,C,D,X,Z], _, Resultado) :-
     and(A, B, E),
     and(C, D, F),
     or(X, Z, G),
     and(E, F, H),
     or(F, G, I),
-    and(H, I, Resultado).
+    final([H, I], Resultado).
 
-c11(A, B, C, D, X, Z, Resultado) :-
+c11([A,B,C,D,X,Z], _, Resultado) :-
     or(A, B, E),
     or(C, D, F),
     and(X, Z, G),
     not(E, H),
     not(F, I),
     or(H, F, J),
-    and(I, G, K),
-    and(J, K, Resultado).
+    final([J, I, G], Resultado).
 
 
 
-c99(A, B, C, D, E, F, G, H, SW1, SW2, Resultado) :-
+c99([A,B,C,D,E,F,G,H], [SW1,SW2], Resultado) :-
     and(A, B, I),
     or(I, C, J),
     and(D, E, K),
@@ -137,7 +145,7 @@ c99(A, B, C, D, E, F, G, H, SW1, SW2, Resultado) :-
     not(X, AA),
     not(Q, Y),
     xor(U, Y, Z),
-    and(V, AA, Z, Resultado).
+    final([V, AA, Z], Resultado).
 
 
 
@@ -149,3 +157,16 @@ circuit(A, B, C, D) :-
     or(U, V, W),
     and(B, C, V),
     not(W, D).
+
+puzzle(1, In, SW) :- c1(In, SW, 1).
+puzzle(2, In, SW) :- c2(In, SW, 1).
+puzzle(3, In, SW) :- c3(In, SW, 1).
+puzzle(4, In, SW) :- c4(In, SW, 1).
+puzzle(5, In, SW) :- c5(In, SW, 1).
+puzzle(6, In, SW) :- c6(In, SW, 1).
+puzzle(7, In, SW) :- c7(In, SW, 1).
+puzzle(8, In, SW) :- c8(In, SW, 1).
+puzzle(9, In, SW) :- c9(In, SW, 1).
+puzzle(10, In, SW) :- c10(In, SW, 1).
+puzzle(11, In, SW) :- c10(In, SW, 1).
+puzzle(99, In, SW) :- c99(In, SW, 1).
