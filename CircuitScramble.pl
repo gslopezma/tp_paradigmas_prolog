@@ -37,6 +37,22 @@ switch(0,A,0,A).
 
 estaEncendido(1).
 
+soluciones(Nivel) :-
+   (	Nivel = 1 -> c1([A,B,C,D],0,1),format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 2 -> c2([A,B,C,D],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 3 -> c3([A,B,C,D],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 4 -> c4([A,B,C,D],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 5 -> c5([A,B,C,D],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 6 -> c6([A,B,C,D],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d~n', [A,B,C,D]), fail
+	;	Nivel = 7 -> c7([A,B,C,D,X,Z],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z]), fail
+	;	Nivel = 8 -> c8([A,B,C,D,X,Z],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z]), fail
+	;	Nivel = 9 -> c9([A,B,C,D,X,Z],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z]), fail
+	;	Nivel = 10 -> c10([A,B,C,D,X,Z],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z]), fail
+	;	Nivel = 11 -> c11([A,B,C,D,X,Z],0,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z]), fail
+	;	Nivel = 24 -> c24([A,B,C,D,X,Z],SW,1), format('A = ~d, B = ~d, C = ~d, D = ~d, X = ~d, Z = ~d~n', [A,B,C,D,X,Z],SW), fail
+	;	Nivel = 99 -> c99([A,B,C,D,E,F,G,H], [SW1,SW2], 1), format('A = ~d, B = ~d, C = ~d, D = ~d, E = ~d, F = ~d, G = ~d, H = ~d~n', [A,B,C,D,E,F,G,H], [SW1,SW2]), fail).
+
+
 c1([A,B,C,D], _, Resultado) :-
     and(A, B, E),
     and(C, D, F),
